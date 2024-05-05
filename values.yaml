@@ -1,0 +1,9 @@
+# Default values for olsen.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+pod:
+  color: blue
+service:
+  type: NodePort
+  port: 32000

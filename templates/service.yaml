@@ -1,0 +1,17 @@
+#URGENT: meme si tu utilise un selector pour cibler les pods à utiliser
+#et le service un targetPort pour les pods ayant des containers avec des ports spécifique
+# Sans le nameSpace tout ça vaut zero. car un service ne peut rechercher que les pods etant dans le meme namespace que lui
+#ensuite il va chercher les containers ayant le port du targetPort
+apiVersion: v1
+kind: Service
+metadata:
+  name: service-nodeport-web
+spec:
+  type: {{ .Values.service.type }}
+  selector:
+    app: web
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+      nodePort: {{ .Values.service.port }}
